@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require './lib/movie_list'
+
+MovieList::CLI.new.call
