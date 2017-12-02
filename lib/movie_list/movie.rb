@@ -21,8 +21,16 @@ class MovieList::Movie
             movie_item[:title] = movie.css('h4').children.attr('title').value
             movie_item[:description] = movie.css('div.outline').text
             movie_item[:director] = movie.css("span[itemprop=director]").css('a[href]').text
+            movie_item[:actors] = build_actor_list(movie.css("span[itemprop=actors]"))
             @@all << movie_item
         end
+        binding.pry
+    end
+    
+    def self.build_actor_list(actors)
+         actors.collect do |actor|
+            actor.css('a[href]').text 
+         end
     end
     
     def self.all
