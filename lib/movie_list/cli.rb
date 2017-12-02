@@ -21,16 +21,21 @@ class MovieList::CLI
         puts "--------------------------------------------------------------"
     end
     
-    
+    def menu_instruction
+         puts "Enter the number of the movie you would like to view, type 'list' to list the movies, or type 'exit'"
+    end
     
     def menu
-         puts "Enter the number of the movie you would like to view, or type 'exit'"
-        input = gets.strip
+        self.menu_instruction
+        input = gets.strip.downcase
         while input != 'exit'
             #puts "You entered #{input}"
             if input.to_i != 0 && input.to_i < MovieList::Movie.all.length + 1
                 int = input.to_i
-                puts MovieList::Movie.movie_details(int)
+                MovieList::Movie.movie_details(int)
+            elsif input ==  'list'
+                MovieList::Movie.list_movies
+                self.menu_instruction
             else
                 puts "Please enter a valid number or type 'exit'"
             end
