@@ -9,7 +9,6 @@ class MovieList::Movie
     end
     
     def self.build_movie_list
-        puts 'BUILDING LIST'
          # Store the html from the url
          doc = Nokogiri::HTML(open("http://www.imdb.com/movies-coming-soon/"))
          
@@ -24,7 +23,6 @@ class MovieList::Movie
             movie_item[:actors] = build_actor_list(movie.css("span[itemprop=actors]"))
             @@all << movie_item
         end
-        binding.pry
     end
     
     def self.build_actor_list(actors)
@@ -38,12 +36,10 @@ class MovieList::Movie
     end
     
     def self.list_movies
-        puts 'GOT HERE'
         self.build_movie_list if self.all.length == 0
         # Loop through all movies and display number and title
         @@all.each_with_index do |movie, index|
             puts "#{movie[:id]}. #{movie[:title]}"
         end
-        #binding.pry
     end
 end

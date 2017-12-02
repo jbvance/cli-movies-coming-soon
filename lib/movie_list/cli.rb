@@ -10,7 +10,7 @@ class MovieList::CLI
        header
        MovieList::Movie.list_movies
        footer
-       puts "Enter the number of the movie you would like to view, or type 'exit'"
+       menu
     end
     
     def header
@@ -24,14 +24,17 @@ class MovieList::CLI
     
     
     def menu
-        #display movies coming soon
-        puts "Enter your choice number or type 'exit'"
-        input = gets.strip.downcase
-        
-        
+         puts "Enter the number of the movie you would like to view, or type 'exit'"
+        input = gets.strip
         while input != 'exit'
             puts "You entered #{input}"
-            input = gets.strip.downcase
+            if input.to_i != 0 && input.to_i < MovieList::Movie.all.length + 1
+                int = input.to_i
+                puts MovieList::Movie.all.select {|movie| movie[:id] == int}
+            else
+                puts "Please enter a valid number of type 'exit'"
+            end
+            input = gets.strip
         end
         puts "GOODBYE!"
     end
