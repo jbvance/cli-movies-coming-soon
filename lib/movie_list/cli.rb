@@ -8,7 +8,7 @@ class MovieList::CLI
     
     def call
        header
-       MovieList::Movie.new.class.list_movies
+       MovieList::Movie.list_movies
        footer
        puts "Enter the number of the movie you would like to view, or type 'exit'"
     end
