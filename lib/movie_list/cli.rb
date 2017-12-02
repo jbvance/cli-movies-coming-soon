@@ -1,8 +1,7 @@
+ require 'pry'
+
 class MovieList::CLI
-    
-    
-    require 'pry'
-    
+
     def initialize
          
     end
