@@ -8,7 +8,9 @@ class MovieList::CLI
     end
     
     def call
-        list_movies
+       header
+       MovieList::Movie.new.class.list_movies
+       footer
        puts "Enter the number of the movie you would like to view, or type 'exit'"
     end
     
@@ -20,20 +22,7 @@ class MovieList::CLI
         puts "--------------------------------------------------------------"
     end
     
-    def list_movies
-        header
-        movie_list = []
-        doc = Nokogiri::HTML(open("http://www.imdb.com/movies-coming-soon/"))
-        movies = doc.css('#main').css('.list').css('div.list_item')
-        #code to get first movie title
-        movies.each_with_index do |movie, index|
-            puts "#{index + 1}. #{movies[index].css('h4').children.attr('title').value}"
-        end
-        footer
-        
-        #binding.pry
-        MovieList::Movie.new
-    end
+    
     
     def menu
         #display movies coming soon
