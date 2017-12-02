@@ -27,12 +27,12 @@ class MovieList::CLI
          puts "Enter the number of the movie you would like to view, or type 'exit'"
         input = gets.strip
         while input != 'exit'
-            puts "You entered #{input}"
+            #puts "You entered #{input}"
             if input.to_i != 0 && input.to_i < MovieList::Movie.all.length + 1
                 int = input.to_i
-                puts MovieList::Movie.all.select {|movie| movie[:id] == int}
+                puts MovieList::Movie.movie_details(int)
             else
-                puts "Please enter a valid number of type 'exit'"
+                puts "Please enter a valid number or type 'exit'"
             end
             input = gets.strip
         end

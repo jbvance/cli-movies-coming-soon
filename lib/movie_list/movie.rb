@@ -25,6 +25,17 @@ class MovieList::Movie
         end
     end
     
+    def self.movie_details(id)
+       movie = self.all.find {|movie| movie[:id] == id}
+       #binding.pry
+       puts "-----------------------------------------"
+        puts movie[:title]
+       puts "Summary: #{movie[:description].delete("\n")}"
+       puts "Stars: #{movie[:actors].join(", ")}"
+       puts "Director: #{movie[:director]}"
+       puts "-----------------------------------------"
+    end
+    
     def self.build_actor_list(actors)
          actors.collect do |actor|
             actor.css('a[href]').text 
