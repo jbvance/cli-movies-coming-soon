@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["jbvance@gmail.com"]
 
   spec.summary       = %q{Current Movies}
-  spec.description   = %q{Current Movies}
+  spec.description   = %q{Displays a list of movies opening soon.}
   #spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 

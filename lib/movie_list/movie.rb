@@ -26,7 +26,7 @@ class MovieList::Movie
     end
     
     def self.movie_details(id)
-       movie = self.all.find {|movie| movie[:id] == id}
+       movie = self.all.find {|m| m[:id] == id}
        #binding.pry
        puts "-----------------------------------------"
         puts movie[:title]
@@ -52,5 +52,13 @@ class MovieList::Movie
         @@all.each_with_index do |movie, index|
             puts "#{movie[:id]}. #{movie[:title]}"
         end
+    end
+    
+    def self.header
+       puts "---------------------MOVIES COMING SOON------------------------" 
+    end
+    
+    def self.footer
+        puts "--------------------------------------------------------------"
     end
 end
